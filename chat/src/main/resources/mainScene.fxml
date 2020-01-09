@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Chat.Controls">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+      <SplitPane dividerPositions="0.6052631578947368" prefHeight="574.0" prefWidth="800.0">
+        <items>
+          <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="573.0" prefWidth="494.0">
+            <children>
+                  <TextArea fx:id="textArea" layoutX="-3.0" prefHeight="515.0" prefWidth="482.0" />
+                  <TextField fx:id="textField" layoutX="6.0" layoutY="532.0" onAction="#send" prefHeight="26.0" prefWidth="358.0" promptText="Write your message here..." />
+                  <Button fx:id="AddPhoto" layoutX="385.0" layoutY="533.0" mnemonicParsing="false" onAction="#sendImage" prefHeight="26.0" prefWidth="77.0" text="Add photo" />
+            </children>
+          </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="573.0" prefWidth="155.0">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="515.0" fitWidth="312.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="Back" layoutX="14.0" layoutY="534.0" mnemonicParsing="false" onAction="#toBack" text="Back" />
+                  <Button fx:id="Next" layoutX="246.0" layoutY="534.0" mnemonicParsing="false" onAction="#toNext" text="Next" />
+                  <Button fx:id="top" layoutX="130.0" layoutY="534.0" mnemonicParsing="false" onAction="#toTop" prefHeight="26.0" prefWidth="41.0" text="Top" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+  </children>
+</VBox>
