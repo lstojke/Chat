@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public static boolean isServer = false;
+    private static boolean isServer = false;
     @Override
     public void start(Stage primaryStage) throws Exception {
         if(!isServer) {

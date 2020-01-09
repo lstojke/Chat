@@ -11,14 +11,14 @@ import java.util.function.Consumer;
 public abstract class Connection extends Parent {
     private Consumer<MessageCloud> receiveData;
     private ConnectionThread cThread = new ConnectionThread();
-    public Connection(Consumer<MessageCloud> receiveData){
+    Connection(Consumer<MessageCloud> receiveData){
         this.receiveData = receiveData;
         cThread.setDaemon(true);
     }
-    public void start() {
+    void start() {
         cThread.start();
     }
-    public void send(MessageCloud data) throws Exception{
+    void send(MessageCloud data) throws Exception{
         cThread.out.writeObject(data);
         //cThread.out.flush();
     }
@@ -50,10 +50,6 @@ public abstract class Connection extends Parent {
                     if(!data.getName().equals(Connection.this.getName())){
                         receiveData.accept(data);
                     }
-                    /*String[] subString = data.text.split(":");
-                    if(!subString[0].equals(Connection.this.getName()+" ")){
-                        receiveData.accept(data);
-                    }*/
                 }
             }catch (Exception e){
                 MessageCloud fail = new MessageCloud("Server","Polaczenie przerwane",null);

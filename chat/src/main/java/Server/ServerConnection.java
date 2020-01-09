@@ -80,35 +80,4 @@ public abstract class ServerConnection {
             }
 
         }
-        private class ConnectionThread extends Thread{
-
-            private Socket socket;
-            private Socket socket2;
-            private ObjectOutputStream out2;
-            @Override
-            public void run(){
-                try(ServerSocket serverSocket = new ServerSocket(getPort());
-                    Socket socket3 = serverSocket.accept();
-                    ObjectOutputStream out3 = new ObjectOutputStream(socket3.getOutputStream());
-                    ObjectInputStream in3 = new ObjectInputStream(socket3.getInputStream());
-                    Socket socket4 = serverSocket.accept();
-                    ObjectOutputStream out4 = new ObjectOutputStream(socket4.getOutputStream());
-                    ObjectInputStream in4 = new ObjectInputStream(socket4.getInputStream())
-                ) {
-
-                    this.socket = socket3;
-                    this.socket2 = socket4;
-                    this.out2 = out4;
-                    /*while(true){
-                        MessageCloud data = (MessageCloud) in3.readObject();
-                        onReceiveCallBack.accept(data);
-                        System.out.println(data.getText());
-                        this.out2.writeObject(data);
-                    }*/
-                }catch (Exception e){
-                    MessageCloud fail = new MessageCloud("Server","Polaczenie przerwane",null);
-                    onReceiveCallBack.accept(fail);
-                }
-            }
-        }
 }
