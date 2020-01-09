@@ -26,7 +26,7 @@ public class Main extends Application {
             primaryStage.setTitle("Chat");
             primaryStage.setScene(new Scene(subScene));
             primaryStage.show();
-            controller.textField.setOnAction(event -> {
+            controller.textField.setOnAction(event -> { //Gdy wpisane bedzie imie, wlacz glowne okno
                 controls.initialize(controller.getname());
                 primaryStage.setScene(new Scene(mainScene));
             });

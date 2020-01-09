@@ -29,7 +29,7 @@ public class MessageCloud implements Serializable {
     }
 
     private void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
-        inputStream.defaultReadObject();
+        inputStream.defaultReadObject(); // zakomentowana jest implementacja przesylania obrazkow ktora nie dziala
         /*if(inputStream.available() >= forImages.length){
         inputStream.readFully(forImages);
         WritableImage wImage = new WritableImage(256,256);

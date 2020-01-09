@@ -38,7 +38,7 @@ public abstract class Connection extends Parent {
         private ObjectOutputStream out;
 
         @Override
-        public void run(){
+        public void run(){ // Laczenie z serwerem i odbieranie od niego danych
             try(Socket socket = new Socket(getIP(),getPort());
                 ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
                 ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {

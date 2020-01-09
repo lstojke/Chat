@@ -22,7 +22,7 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class Controls {
+public class Controls { //glowny kontroler
 
     private User user;
     @FXML
@@ -66,7 +66,7 @@ public class Controls {
         user.send(temp);
     }
     @FXML
-    public void undo() throws Exception {
+    public void undo() throws Exception { //usuwanie wiadomosci (szuka ostatniej wlasnej wiadomosci)
         if(!user.messages.isEmpty()){
             for(int i=1; i<=user.messages.size(); i++){
                 MessageCloud del = new MessageCloud(user.getMessage(i).label.getText(),user.getMessage(i).textArea.getText(),user.getMessage(i).imageView.getImage());
@@ -82,7 +82,7 @@ public class Controls {
         }
     }
     @FXML
-    public void send(){
+    public void send(){ //przesylanie wiadomosci tekstowej
         String message = textField2.getText();
         textField2.clear();
         if(message.equals("")){return;}
@@ -99,16 +99,16 @@ public class Controls {
     private User createClient() {
         return new User("127.0.0.1",5555,data-> Platform.runLater(() -> {
             ChatBubble chatBubble = new ChatBubble(data.getName(),data);
-            if(data.todelete && !data.getName().equals(user.getName())){
+            if(data.todelete && !data.getName().equals(user.getName())){    //jezeli jest informacja o usunieciu wiadomosci
                 vlist.getChildren().remove(user.messages.size()-data.pos);
                 user.messages.remove(data.pos -1);
             }
             else {
-                chatBubble.hBox.setAlignment(Pos.CENTER_RIGHT);
+                chatBubble.hBox.setAlignment(Pos.CENTER_RIGHT); // wyswietlanie odebranej wiadomosci po prawej stronie
                 user.addMessage(chatBubble);
                 vlist.getChildren().add(user.getMessage(1).hBox);
             }
-            scrollPane.vvalueProperty().bind(vlist.heightProperty());
+            scrollPane.vvalueProperty().bind(vlist.heightProperty()); // podazanie za najnowszymi wiadomosciami
         })
         );
     }
