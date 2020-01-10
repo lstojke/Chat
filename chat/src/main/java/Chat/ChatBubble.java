@@ -8,7 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-public class ChatBubble extends Parent { //klasa do tworzenia jednego dymka czatu
+public class ChatBubble extends Parent {
     Label label;
     TextArea textArea;
     ImageView imageView;
