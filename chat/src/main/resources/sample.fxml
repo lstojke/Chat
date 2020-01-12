@@ -16,7 +16,7 @@
             <Font size="30.0" />
           </font>
         </Label>
-            <TextField fx:id="textField" layoutX="53.0" layoutY="222.0" onAction="#setname" prefHeight="55.0" prefWidth="293.0" promptText="Write your name here..." style="-fx-background-image: url(intro.jpg);">
+            <TextField fx:id="textField" layoutX="53.0" layoutY="222.0" prefHeight="55.0" prefWidth="293.0" promptText="Write your name here..." style="-fx-background-color: white;">
                <font>
                   <Font size="20.0" />
                </font>

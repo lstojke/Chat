@@ -1,18 +1,14 @@
 package Server;
 
-import Chat.MessageCloud;
-
-import java.util.function.Consumer;
 
 public class Server extends ServerConnection {
     private int port;
 
-    public Server (int port, Consumer<MessageCloud> onReceiveCallBack) {
-        super(onReceiveCallBack);
+    public Server(int port) {
         this.port = port;
     }
-    @Override
-    protected int getPort(){
+
+    public int getPort() {
         return port;
     }
 }

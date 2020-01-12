@@ -10,24 +10,27 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    private static boolean isServer = false;
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        if(!isServer) {
+        boolean isServer = false;
+        if (!isServer) {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(this.getClass().getResource("../sample.fxml"));
             Parent subScene = loader.load();
             Controller controller = loader.getController();
-            controller.initialize();
-            FXMLLoader loader1 = new FXMLLoader();
-            loader1.setLocation(this.getClass().getResource("../mainScene2.fxml"));
-            Parent mainScene = loader1.load();
-            Controls controls = loader1.getController();
+            FXMLLoader mainLoader = new FXMLLoader();
+            mainLoader.setLocation(this.getClass().getResource("../mainScene2.fxml"));
+            Parent mainScene = mainLoader.load();
+            Controls controls = mainLoader.getController();
             primaryStage.setTitle("Chat");
             primaryStage.setScene(new Scene(subScene));
             primaryStage.show();
             controller.textField.setOnAction(event -> {
-                controls.initialize(controller.getname());
+                controls.initialize(controller.getName());
                 primaryStage.setScene(new Scene(mainScene));
             });
             primaryStage.setOnCloseRequest(windowEvent -> {
@@ -35,18 +38,14 @@ public class Main extends Application {
                 Platform.exit();
                 System.exit(0);
             });
-        }
-        else {
+        } else {
             Server server = createServer();
             server.start();
         }
     }
-    public static void main(String[] args) {
-        launch(args);
-    }
 
     private Server createServer() {
-        return new Server(5000, data -> {});
+        return new Server(5000);
     }
 }
 

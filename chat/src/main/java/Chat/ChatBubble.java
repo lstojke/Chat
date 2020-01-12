@@ -3,37 +3,37 @@ package Chat;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-public class ChatBubble extends Parent {
+import java.io.ByteArrayInputStream;
+
+class ChatBubble extends Parent {
     Label label;
     TextArea textArea;
-    ImageView imageView;
-    VBox vBox;
+    byte[] imageBuffer;
     HBox hBox;
-    ChatBubble(String name, MessageCloud messageCloud){
+
+    ChatBubble(String name, MessageCloud messageCloud) {
         label = new Label();
         label.setText(name);
-        if(messageCloud.getImage() == null){
-            textArea = new TextArea();
+        textArea = new TextArea();
+        ImageView imageView;
+        VBox vBox;
+        if (messageCloud.getBuffer() == null) {
             textArea.setText(messageCloud.getText());
-            imageView = new ImageView();
-            vBox = new VBox(1,label,textArea);
+            vBox = new VBox(1, label, textArea);
 
-        }
-        else {
+        } else {
             imageView = new ImageView();
-            imageView.setImage(messageCloud.getImage());
-            vBox = new VBox(1,label,imageView);
+            imageBuffer = messageCloud.getBuffer();
+            imageView.setImage(new Image(new ByteArrayInputStream(imageBuffer)));
+            vBox = new VBox(1, label, imageView);
         }
-        vBox.setPrefSize(150,60);
+        vBox.setPrefSize(150, 60);
         hBox = new HBox(vBox);
-    }
-    public MessageCloud getData(){
-        return new MessageCloud(label.getText(),textArea.getText(),imageView.getImage());
     }
 
 
