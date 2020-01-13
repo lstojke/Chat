@@ -1,6 +1,5 @@
 package Chat;
 
-import Server.Server;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -16,36 +15,18 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        boolean isServer = false;
-        if (!isServer) {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(this.getClass().getResource("../sample.fxml"));
-            Parent subScene = loader.load();
-            Controller controller = loader.getController();
-            FXMLLoader mainLoader = new FXMLLoader();
-            mainLoader.setLocation(this.getClass().getResource("../mainScene2.fxml"));
-            Parent mainScene = mainLoader.load();
-            Controls controls = mainLoader.getController();
-            primaryStage.setTitle("Chat");
-            primaryStage.setScene(new Scene(subScene));
-            primaryStage.show();
-            controller.textField.setOnAction(event -> {
-                controls.initialize(controller.getName());
-                primaryStage.setScene(new Scene(mainScene));
-            });
-            primaryStage.setOnCloseRequest(windowEvent -> {
-                primaryStage.close();
-                Platform.exit();
-                System.exit(0);
-            });
-        } else {
-            Server server = createServer();
-            server.start();
-        }
-    }
-
-    private Server createServer() {
-        return new Server(5000);
+        FXMLLoader firstScene = new FXMLLoader(this.getClass().getResource("../starter.fxml"));
+        Parent startScene = firstScene.load();
+        Starter starter = firstScene.getController();
+        starter.initialize(primaryStage);
+        primaryStage.setTitle("Chat");
+        primaryStage.setScene(new Scene(startScene));
+        primaryStage.show();
+        primaryStage.setOnCloseRequest(windowEvent -> {
+            primaryStage.close();
+            Platform.exit();
+            System.exit(0);
+        });
     }
 }
 

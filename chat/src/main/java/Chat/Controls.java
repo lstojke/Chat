@@ -27,8 +27,8 @@ public class Controls {
     public Controls() {
     }
 
-    void initialize(String name) {
-        user = createClient();
+    void initialize(String name, int port) {
+        user = createClient(port);
         user.setName(name);
         user.start();
         fileChooser = new FileChooser();
@@ -84,8 +84,8 @@ public class Controls {
         }
     }
 
-    private User createClient() {
-        return new User("127.0.0.1", 5000, data -> Platform.runLater(() -> {
+    private User createClient(int port) {
+        return new User("127.0.0.1", port, data -> Platform.runLater(() -> {
             ChatBubble chatBubble = new ChatBubble(data.getName(), data);
             if (data.toDelete && !data.getName().equals(user.getName())) {
                 vlist.getChildren().remove(user.messages.size() - data.position);

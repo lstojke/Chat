@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" style="-fx-background-image: url(intro.png);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Chat.Starter">
+   <children>
+      <Button fx:id="clientButton" layoutX="183.0" layoutY="175.0" mnemonicParsing="false" onAction="#chooseClient" prefHeight="50.0" prefWidth="80.0" text="Client">
+         <font>
+            <Font name="Elephant" size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="36.0" layoutY="99.0" prefHeight="50.0" prefWidth="227.0" style="-fx-background-color: white;" text="Choose how you want to connect" textAlignment="CENTER">
+         <font>
+            <Font name="Elephant" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="serverButton" layoutX="36.0" layoutY="175.0" mnemonicParsing="false" onAction="#chooseServer" prefHeight="50.0" prefWidth="80.0" text="Server">
+         <font>
+            <Font name="Elephant" size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="setPort" editable="false" layoutX="76.0" layoutY="252.0" onAction="#setPort" promptText="Set Port here.." />
+   </children>
+</AnchorPane>

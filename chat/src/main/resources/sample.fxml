@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Chat.Controller">
+<VBox prefHeight="500.0" prefWidth="400.0" style="-fx-background-image: url(intro.png);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Chat.Controller">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="500.0" prefWidth="400.0" style="-fx-background-image: url(intro.jpg);" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="500.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="22.0" layoutY="132.0" style="&#10;" text="Hi, write your name below!" textAlignment="CENTER" textFill="WHITE">
+        <Label alignment="CENTER" layoutX="13.0" layoutY="131.0" style="-fx-background-color: white;" text="Hi, write your name below!" textAlignment="CENTER">
           <font>
-            <Font size="30.0" />
+            <Font name="Elephant" size="28.0" />
           </font>
         </Label>
-            <TextField fx:id="textField" layoutX="53.0" layoutY="222.0" prefHeight="55.0" prefWidth="293.0" promptText="Write your name here..." style="-fx-background-color: white;">
+            <TextField fx:id="textField" layoutX="53.0" layoutY="222.0" onAction="#setName" prefHeight="55.0" prefWidth="293.0" promptText="Write your name here..." style="-fx-background-color: white;">
                <font>
                   <Font size="20.0" />
                </font>

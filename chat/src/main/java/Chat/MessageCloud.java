@@ -17,9 +17,15 @@ public class MessageCloud implements Serializable {
         position = 0;
     }
 
-    byte[] getBuffer() { return forImages; }
+    byte[] getBuffer() {
+        return forImages;
+    }
 
-    String getText() { return text; }
+    String getText() {
+        return text;
+    }
 
-    String getName() { return name; }
+    String getName() {
+        return name;
+    }
 }
