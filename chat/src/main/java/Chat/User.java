@@ -4,7 +4,7 @@ import java.util.Stack;
 import java.util.function.Consumer;
 
 public class User extends Connection {
-    Stack<ChatBubble> messages;
+    Stack<MessageCloud> messages;
     private int port;
     private String IP;
     private String name;
@@ -17,11 +17,11 @@ public class User extends Connection {
     }
 
 
-    void addMessage(ChatBubble chatBubble) {
+    void addMessage(MessageCloud chatBubble) {
         messages.push(chatBubble);
     }
 
-    ChatBubble getMessage(int i) {
+    MessageCloud getMessage(int i) {
         return messages.get(messages.size() - i);
     }
 

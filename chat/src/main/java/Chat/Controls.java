@@ -41,8 +41,8 @@ public class Controls {
         byte[] buffer = Files.readAllBytes(selectedFile.toPath());
         MessageCloud temp = new MessageCloud(user.getName(), null, buffer);
         ChatBubble chatBubble = new ChatBubble(user.getName(), temp);
-        user.addMessage(chatBubble);
-        vlist.getChildren().add(user.getMessage(1).hBox);
+        user.addMessage(temp);
+        vlist.getChildren().add(chatBubble.hBox);
         user.send(temp);
     }
 
@@ -50,7 +50,7 @@ public class Controls {
     public void undo() throws Exception {
         if (!user.messages.isEmpty()) {
             for (int i = 1; i <= user.messages.size(); i++) {
-                MessageCloud del = new MessageCloud(user.getMessage(i).label.getText(), user.getMessage(i).textArea.getText(), user.getMessage(i).imageBuffer);
+                MessageCloud del = new MessageCloud(user.getMessage(i).getName(), user.getMessage(i).getText(), user.getMessage(i).getBuffer());
 
                 if (del.getName().equals(user.getName())) {
                     del.toDelete = true;
@@ -74,8 +74,8 @@ public class Controls {
         MessageCloud temp = new MessageCloud(user.getName(), message, null);
         ChatBubble chatBubble = new ChatBubble(user.getName(), temp);
         chatBubble.hBox.setAlignment(Pos.CENTER_LEFT);
-        user.addMessage(chatBubble);
-        vlist.getChildren().add(user.getMessage(1).hBox);
+        user.addMessage(temp);
+        vlist.getChildren().add(chatBubble.hBox);
         scrollPane.vvalueProperty().bind(vlist.heightProperty());
         try {
             user.send(temp);
@@ -92,8 +92,8 @@ public class Controls {
                 user.messages.remove(user.messages.size() - data.position);
             } else {
                 chatBubble.hBox.setAlignment(Pos.CENTER_RIGHT);
-                user.addMessage(chatBubble);
-                vlist.getChildren().add(user.getMessage(1).hBox);
+                user.addMessage(data);
+                vlist.getChildren().add(chatBubble.hBox);
             }
             scrollPane.vvalueProperty().bind(vlist.heightProperty());
         })
