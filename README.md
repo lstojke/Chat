@@ -26,5 +26,5 @@ Serwer nie posiada widoku, a tak naprawdę tylko wyświetla na konsoli komunikat
 
 ### Klient
 
-**Model** - obsługuje połączenie z serwerem oraz wykonuje żądania użytkownika, przesyłając je do serwera. Konwertuje również obrazy do przesłania na tablice bajtów w celu serializacji danych.
+**Model** - obsługuje połączenie z serwerem oraz wykonuje żądania użytkownika, przesyłając je do serwera. Konwertuje również obrazy do przesłania na tablice bajtów w celu serializacji danych. <br>
 **Kontroler** - odpowiada za komunikację modelu z widokiem/użytkownikiem. W nim zapadają decyzje o przełożeniu wciśnięcia klawisza przez użytkownika na konkretne działanie modelu w tej sytuacji. Dzięki JavaFX można w prosty sposób zaimplementować taką komunikację poprzez wstrzykiwanie przycisków do odpowiednich funkcji.
