@@ -25,7 +25,6 @@ public abstract class ServerConnection {
                 clients.add(out);
                 Thread thread = new Thread(new ConnThread(socket));
                 thread.start();
-
             }
         } catch (Exception e) {
             e.printStackTrace();

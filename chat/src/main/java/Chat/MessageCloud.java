@@ -3,8 +3,8 @@ package Chat;
 import java.io.Serializable;
 
 public class MessageCloud implements Serializable {
-    boolean toDelete;
-    int position;
+    private boolean toDelete;
+    private int position;
     private String text;
     private String name;
     private byte[] forImages;
@@ -27,5 +27,21 @@ public class MessageCloud implements Serializable {
 
     String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public boolean isToDelete() {
+        return toDelete;
+    }
+
+    public void setToDelete(boolean toDelete) {
+        this.toDelete = toDelete;
     }
 }

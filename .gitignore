@@ -1,1 +1,5 @@
 *.class
+
+chat/.idea/
+
+chat/target/

@@ -47,7 +47,7 @@ abstract class Connection extends Parent {
                         receiveData.accept(data);
                     }
                 }
-            } catch (Exception e) {
+            } catch (IOException | ClassNotFoundException e) {
                 MessageCloud fail = new MessageCloud("Server", "Polaczenie przerwane", null);
                 receiveData.accept(fail);
             }

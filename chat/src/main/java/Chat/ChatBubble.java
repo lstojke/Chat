@@ -11,10 +11,10 @@ import javafx.scene.layout.VBox;
 import java.io.ByteArrayInputStream;
 
 class ChatBubble extends Parent {
-    Label label;
-    TextArea textArea;
-    byte[] imageBuffer;
-    HBox hBox;
+    private Label label;
+    private TextArea textArea;
+    private byte[] imageBuffer;
+    private HBox hBox;
 
     ChatBubble(String name, MessageCloud messageCloud) {
         label = new Label();
@@ -37,4 +37,7 @@ class ChatBubble extends Parent {
     }
 
 
+    public HBox gethBox() {
+        return hBox;
+    }
 }

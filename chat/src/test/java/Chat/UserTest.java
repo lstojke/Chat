@@ -20,7 +20,7 @@ class UserTest {
         setUser();
         MessageCloud messageCloud = new MessageCloud("name", "notNull", new byte[0]);
         user.addMessage(messageCloud);
-        assertFalse(user.messages.empty());
+        assertFalse(user.isEmpty());
     }
 
     @Test

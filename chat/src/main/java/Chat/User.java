@@ -4,7 +4,7 @@ import java.util.Stack;
 import java.util.function.Consumer;
 
 public class User extends Connection {
-    Stack<MessageCloud> messages;
+    private Stack<MessageCloud> messages;
     private int port;
     private String IP;
     private String name;
@@ -29,9 +29,15 @@ public class User extends Connection {
         return name;
     }
 
-    void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
+
+    public int getSize(){return messages.size();}
+
+    public boolean isEmpty(){return messages.isEmpty();}
+
+    public void deleteMessage(int position){messages.remove(messages.size()-position);}
 
     @Override
     protected String getIP() {

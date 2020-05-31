@@ -42,22 +42,22 @@ public class Controls {
         MessageCloud temp = new MessageCloud(user.getName(), null, buffer);
         ChatBubble chatBubble = new ChatBubble(user.getName(), temp);
         user.addMessage(temp);
-        vlist.getChildren().add(chatBubble.hBox);
+        vlist.getChildren().add(chatBubble.gethBox());
         user.send(temp);
     }
 
     @FXML
     public void undo() throws Exception {
-        if (!user.messages.isEmpty()) {
-            for (int i = 1; i <= user.messages.size(); i++) {
+        if (!user.isEmpty()) {
+            for (int i = 1; i <= user.getSize(); i++) {
                 MessageCloud del = new MessageCloud(user.getMessage(i).getName(), user.getMessage(i).getText(), user.getMessage(i).getBuffer());
 
                 if (del.getName().equals(user.getName())) {
-                    del.toDelete = true;
-                    del.position = i;
+                    del.setToDelete(true);
+                    del.setPosition(i);
                     user.send(del);
-                    vlist.getChildren().remove(user.messages.size() - i);
-                    user.messages.remove(user.messages.size() - i);
+                    vlist.getChildren().remove(user.getSize() - i);
+                    user.deleteMessage(i);
                     return;
                 }
             }
@@ -73,9 +73,9 @@ public class Controls {
         }
         MessageCloud temp = new MessageCloud(user.getName(), message, null);
         ChatBubble chatBubble = new ChatBubble(user.getName(), temp);
-        chatBubble.hBox.setAlignment(Pos.CENTER_LEFT);
+        chatBubble.gethBox().setAlignment(Pos.CENTER_LEFT);
         user.addMessage(temp);
-        vlist.getChildren().add(chatBubble.hBox);
+        vlist.getChildren().add(chatBubble.gethBox());
         scrollPane.vvalueProperty().bind(vlist.heightProperty());
         try {
             user.send(temp);
@@ -87,13 +87,13 @@ public class Controls {
     private User createClient(int port) {
         return new User("127.0.0.1", port, data -> Platform.runLater(() -> {
             ChatBubble chatBubble = new ChatBubble(data.getName(), data);
-            if (data.toDelete && !data.getName().equals(user.getName())) {
-                vlist.getChildren().remove(user.messages.size() - data.position);
-                user.messages.remove(user.messages.size() - data.position);
+            if (data.isToDelete() && !data.getName().equals(user.getName())) {
+                vlist.getChildren().remove(user.getSize() - data.getPosition());
+                user.deleteMessage(data.getPosition());
             } else {
-                chatBubble.hBox.setAlignment(Pos.CENTER_RIGHT);
+                chatBubble.gethBox().setAlignment(Pos.CENTER_RIGHT);
                 user.addMessage(data);
-                vlist.getChildren().add(chatBubble.hBox);
+                vlist.getChildren().add(chatBubble.gethBox());
             }
             scrollPane.vvalueProperty().bind(vlist.heightProperty());
         })
